@@ -22,6 +22,7 @@ var StudentService = {
               <div class="card">
                 <div class="card-body">
                   <h5 class="card-title">First Name : ${student.FirstName}</h5>
+                  <h5 class="card-title">Last Name : ${student.LastName}</h5>
                   <p class="card-text"> Grade : ${student.Grade}</p>
                   <p class="card-text">Description : ${student.Description}</p>
                   <div class="btn-group" role="group">
@@ -72,6 +73,7 @@ var StudentService = {
 
   update: function() {
     var student = {};
+    console.log(student)
     student.ID = $('#FirstName').attr('data-id');
     student.FirstName = $('#FirstName').val();
     student.LastName = $('#LastName').val();
@@ -83,6 +85,7 @@ var StudentService = {
       data: JSON.stringify(student),
       contentType: 'application/json',
       success: function(result) {
+        $('#exampleModal').modal('hide'); // Close the modal
         StudentService.list();
       }
     });

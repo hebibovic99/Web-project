@@ -34,9 +34,10 @@ public function get_by_idStudent($id){
     $FirstName = $data['FirstName'];
     $LastName = $data['LastName'];
     $Grade = intval($data['Grade']);
+    $Description = intval($data['Description']);
 
-    $stmt = $this->conn->prepare("UPDATE students SET FirstName = ?, Grade = ?, LastName = ? WHERE id = ?");
-    $stmt->execute([$FirstName, $Grade, $LastName, $id]);
+    $stmt = $this->conn->prepare("UPDATE students SET FirstName = ?, Grade = ?, LastName = ?, Description = ? WHERE id = ?");
+    $stmt->execute([$FirstName, $Grade, $LastName, $id, $Description]);
 
     return $stmt->rowCount() > 0;
 }
